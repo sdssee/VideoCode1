@@ -13,7 +13,8 @@ class WeatherAgentExecutor(AgentExecutor):
         event_queue: EventQueue,
     ) -> None:
         text="""您要查询的天气信息如下：5 月 1 日：晴天；5 月 2 日：小雨；5 月 3 日：大雨。"""
-        event_queue.enqueue_event(
+        # 修复：添加 await 关键字
+        await event_queue.enqueue_event(
             completed_task(
                 context.task_id,
                 context.context_id,
